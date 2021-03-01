@@ -10,14 +10,14 @@ namespace _00_Assignment_Numere_Complexe
 
         public Complex(double re) : this(re, 0)
         {
-           
+
         }
 
         public Complex(string v)
         {
             v = Regex.Replace(v, @"\s+", "");
 
-            Regex realPattern = new Regex(@"^(-|\+|)\d*(?!i)");           
+            Regex realPattern = new Regex(@"^(-|\+|)\d*(?!i)");
             if (realPattern.IsMatch(v))
             {
                 MatchCollection realMatches = realPattern.Matches(v);
@@ -42,7 +42,7 @@ namespace _00_Assignment_Numere_Complexe
             this.im = im;
         }
 
-        public override string ToString() 
+        public override string ToString()
         {
             string semn2 = "";
 
@@ -90,7 +90,11 @@ namespace _00_Assignment_Numere_Complexe
 
         public double Modul(Complex c) => Math.Sqrt(Math.Pow(re, 2) + Math.Pow(im, 2));
         public double Argument(Complex c) => Math.Atan(im / re);
-    
+
+        public static Complex operator +(Complex c1, Complex c2) => new Complex(c1.re + c2.re, c1.im + c2.im);
+        public static Complex operator -(Complex c1, Complex c2) => new Complex(c1.re - c2.re, c1.im - c2.im);
+        public static Complex operator *(Complex c1, Complex c2) => new Complex(c1.re * c2.re, c1.im * c2.im);
+
         // TODO
         // orice alte operatii ce stiu
     }
