@@ -15,17 +15,21 @@ namespace _00_Assignment_Numere_Complexe
 
         public Complex(string v)
         {
-            Regex.Replace(v, @"\s+", "");
+            v = Regex.Replace(v, @"\s+", "");
 
-            Regex realPattern = new Regex(@"^(-|\+|)\d*");           
+            Regex realPattern = new Regex(@"^(-|\+|)\d*(?!i)");           
             if (realPattern.IsMatch(v))
             {
                 MatchCollection realMatches = realPattern.Matches(v);
-                this.re = double.Parse(realMatches[0].ToString());
+
+                if (realMatches[0].ToString().Length != 0)
+                {
+                    this.re = double.Parse(realMatches[0].ToString());
+                }
             }
 
-            Regex imagPattern = new Regex(@"(\+|-)\d*(?=\s*i)");
-            if (realPattern.IsMatch(v))
+            Regex imagPattern = new Regex(@"(\+|-|)\d*(?=i$)");
+            if (imagPattern.IsMatch(v))
             {
                 MatchCollection imagMatches = imagPattern.Matches(v);
                 this.im = double.Parse(imagMatches[0].ToString());
