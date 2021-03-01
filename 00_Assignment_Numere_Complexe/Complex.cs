@@ -22,7 +22,7 @@ namespace _00_Assignment_Numere_Complexe
             {
                 MatchCollection realMatches = realPattern.Matches(v);
 
-                if (realMatches[0].ToString().Length != 0)
+                if (!(realMatches[0].ToString().Length == 0 || realMatches[0].ToString() == "-" || realMatches[0].ToString() == "+"))
                 {
                     this.re = double.Parse(realMatches[0].ToString());
                 }

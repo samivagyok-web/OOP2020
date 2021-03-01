@@ -14,11 +14,13 @@ namespace _00_Assignment_Numere_Complexe
         //   Complex c2 = new Complex(4, -3);
         //   Complex c3 = new Complex(3);
         //   Complex c4 = new Complex(0, -5);
-            Complex c5 = new Complex("2i");
+            Complex c5 = new Complex("+2i");
           Complex a = new Complex("3");
-          Complex b = new Complex("-3 - 2i");
+          Complex b = new Complex("-23 - 2i");
           Complex c = new Complex("4 + 7i");
           Complex d = new Complex("9 - 8i");
+            Complex e = new Complex("0 - 8i");
+            Complex f = new Complex("9 - 0i");
             //  Complex c6 = c5.Add(c1);
             //  Complex c7 = c2.Multiply(c3);
             //  double a = c1.Modul(c1);
@@ -27,6 +29,8 @@ namespace _00_Assignment_Numere_Complexe
             Console.WriteLine(b);
             Console.WriteLine(c);
             Console.WriteLine(d);
+            Console.WriteLine(e);
+            Console.WriteLine(f);
 
             //Console.WriteLine(c7);
             // TODO: overloading operators
