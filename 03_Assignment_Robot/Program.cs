@@ -12,13 +12,18 @@ namespace _03_Assignment_Robot
         {
             GiantKillerRobot robot = new GiantKillerRobot();
             robot.initialize();
-            robot.currentVersion();
-            robot.degradeRobot();
-            robot.upgradeRobot();
-            robot.currentVersion();
 
             robot.EyeLaserIntensity = Intensity.Kill;
-            Console.WriteLine($"Current eye-laser intensity: {robot.EyeLaserIntensity}");
+            Console.WriteLine($"Current eye-laser intensity: {robot.EyeLaserIntensity}\n");
+
+            robot.InitialTargets(new List<string>() { "Humans", "Animals", "Superheroes" });
+
+            Earth earth = new Earth();
+            while (earth.containsLife())
+            {
+                robot.attack(earth);
+            }
+            
         }
     }
 }

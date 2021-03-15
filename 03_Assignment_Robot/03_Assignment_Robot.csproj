@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="GiantKillerRobot.cs" />
     <Compile Include="Intensity.cs" />
+    <Compile Include="PlanetsFolder\Earth.cs" />
+    <Compile Include="PlanetsFolder\Jupiter.cs" />
+    <Compile Include="PlanetsFolder\Mars.cs" />
+    <Compile Include="PlanetsFolder\Venus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
