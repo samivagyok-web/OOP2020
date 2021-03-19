@@ -13,6 +13,8 @@ namespace _04_Assignment_Article_List
         private List<string> authors = new List<string>();
         DateTime datePosted, dateLastUpdate;
         private static Random rnd = new Random();
+        private int likes = rnd.Next(0, 10000);
+        private int dislikes = rnd.Next(0, 10000);
         #endregion
 
         #region Constructor
@@ -28,13 +30,15 @@ namespace _04_Assignment_Article_List
         #endregion
 
         #region Likes/Dislikes
-        private int likes { get; } = rnd.Next(0, 10000);
-        private int dislikes { get; } = rnd.Next(0, 10000);
+        public int Likes { get { return likes; } }
+        public int Dislikes { get { return dislikes; } }
         #endregion
 
         #region Properties
         public string Title { get { return title; } }
         public string Content { get { return content; } }
+        public string Tag { get { return tag; } }
+        public List<string> Authors { get { return authors; } }
         public DateTime DatePosted { get { return datePosted; } }
         public DateTime DateLastUpdate { get { return dateLastUpdate; } }
         #endregion

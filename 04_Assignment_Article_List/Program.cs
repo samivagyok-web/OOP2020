@@ -40,6 +40,8 @@ namespace _04_Assignment_Article_List
 
                 articles.Add(new Article(title, content, authorList, datePosted, dateUpdated, tag));
             }
+
+            Sort.AuthorPostings(articles);
         }
     }
 }
