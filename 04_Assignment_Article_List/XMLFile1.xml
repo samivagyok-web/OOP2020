@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Articles>
+	<Article>
+		<Title>
+			Arcticle Title 1
+		</Title>
+		<Authors>
+			<Author>
+				John Doe
+			</Author>
+		</Authors>
+
+		<Content>
+			This is the first article's content
+		</Content>
+
+		<DatePosted>
+			2009-06-15 13:45:30
+		</DatePosted>
+
+		<DateLastUpdate>
+			2009-06-18 09:32:04
+		</DateLastUpdate>
+
+		<Tag>
+			Math
+		</Tag>
+	</Article>
+</Articles> 

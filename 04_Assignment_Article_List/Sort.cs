@@ -20,7 +20,7 @@ namespace _04_Assignment_Article_List
             return articles;
         }
 
-        public static void AuthorPostings(List<Article> articles)
+        public static void numberOfArticlesPostedPerAuthor(List<Article> articles)
         {
             Dictionary<string, int> authors = new Dictionary<string, int>();
 

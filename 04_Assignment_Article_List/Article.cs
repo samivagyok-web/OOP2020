@@ -13,8 +13,6 @@ namespace _04_Assignment_Article_List
         private List<string> authors = new List<string>();
         DateTime datePosted, dateLastUpdate;
         private static Random rnd = new Random();
-        private int likes = rnd.Next(0, 10000);
-        private int dislikes = rnd.Next(0, 10000);
         #endregion
 
         #region Constructor
@@ -30,8 +28,8 @@ namespace _04_Assignment_Article_List
         #endregion
 
         #region Likes/Dislikes
-        public int Likes { get { return likes; } }
-        public int Dislikes { get { return dislikes; } }
+        public int Likes { get; } = rnd.Next(0, 10000);
+        public int Dislikes { get; } = rnd.Next(0, 10000);
         #endregion
 
         #region Properties
@@ -43,20 +41,17 @@ namespace _04_Assignment_Article_List
         public DateTime DateLastUpdate { get { return dateLastUpdate; } }
         #endregion
 
+        #region String Methods
         public string returnAuthorsInString()
         {
-            string auth = "";
-
-            for (int i = 0; i < authors.Count - 1; i++)
-                auth += authors[i] + ", ";
-            auth += authors[authors.Count - 1];
-
-            return auth;
+            return String.Join(", ", authors);
         }
 
         public override string ToString()
         {
             return $"{title} by {returnAuthorsInString()} \nDate Posted: {datePosted}\n\n{content}\n\n";
         }
+
+        #endregion
     }
 }

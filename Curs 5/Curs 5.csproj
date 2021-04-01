@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEDA2D69-0C82-40F8-8E4F-6FB5DD9AB3D6}</ProjectGuid>
+    <ProjectGuid>{30243535-872E-4078-817B-B07DCE92E547}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_04_Assignment_Article_List</RootNamespace>
-    <AssemblyName>04_Assignment_Article_List</AssemblyName>
+    <RootNamespace>Curs_5</RootNamespace>
+    <AssemblyName>Curs 5</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,20 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article.cs" />
-    <Compile Include="Filter.cs" />
+    <Compile Include="ContBancar.cs" />
+    <Compile Include="InvalidAmountException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Arcticles.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="XMLFile1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

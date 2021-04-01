@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml;
 
 namespace _04_Assignment_Article_List
 {
@@ -41,7 +42,8 @@ namespace _04_Assignment_Article_List
                 articles.Add(new Article(title, content, authorList, datePosted, dateUpdated, tag));
             }
 
-            Sort.AuthorPostings(articles);
+             foreach(var a in Filter.ByAuthor(articles, "John Doe"))
+                Console.WriteLine(a);
         }
     }
 }
