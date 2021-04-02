@@ -22,14 +22,16 @@ namespace _05_Assignment_Queue
 
         public bool Contains(T searchingFor) => Array.Exists(data, element => element.Equals(searchingFor));
 
-        public void Dequeue()
+        public T Dequeue()
         {
             if (data[left].Equals(default(T)))
                 throw new QueueEmptyException();
             else
             {
+                T dequeuedMember = data[left];
                 data[left] = default(T);
                 left = (left % size) + 1;
+                return dequeuedMember;
             }
         }
 

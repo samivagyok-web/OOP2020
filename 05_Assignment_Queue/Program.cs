@@ -11,17 +11,11 @@ namespace _05_Assignment_Queue
         static void Main(string[] args)
         {
             Queue<int> a = new Queue<int>();
-            QueueCircular<int> asd = new QueueCircular<int>();
-            
-            asd.Enqueue(5);
-            asd.Enqueue(6);
-            asd.Dequeue();
-            asd.Enqueue(7);
-            asd.Enqueue(8);
-            Console.WriteLine(asd.Count);
-            asd.Dequeue();
-            asd.Contains(7);
-            asd.Clear();
+
+            QueueLL<int> b = new QueueLL<int>();
+            b.Enqueue(2);
+            b.Enqueue(4);
+            b.Enqueue(5);
         }
     }
 }

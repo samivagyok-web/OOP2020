@@ -9,7 +9,7 @@ namespace _05_Assignment_Queue
     public interface Q<T>
     {
         void Enqueue(T putInQ);
-        void Dequeue();
+        T Dequeue();
         void Clear();
         T Peek();
         bool Contains(T searchingFor);

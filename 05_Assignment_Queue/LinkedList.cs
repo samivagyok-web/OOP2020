@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace _05_Assignment_Queue
 {
-    public class LinkedList
+    public class LinkedList<T>
     {
-        public int val;
-        public LinkedList next;
+        public T val;
+        public LinkedList<T> next;
 
-        public LinkedList(int val = 0, LinkedList next = null)
+        public LinkedList(T val = default(T), LinkedList<T> next = null)
         {
             this.val = val;
             this.next = next;
