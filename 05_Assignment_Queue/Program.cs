@@ -12,10 +12,12 @@ namespace _05_Assignment_Queue
         {
             Queue<int> a = new Queue<int>();
 
+
             QueueLL<int> b = new QueueLL<int>();
             b.Enqueue(2);
             b.Enqueue(4);
             b.Enqueue(5);
+            b.Contains(5);
         }
     }
 }

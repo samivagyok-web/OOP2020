@@ -10,12 +10,19 @@ namespace _05_Assignment_Queue
     public class QueueCircular<T> : Q<T>
     {
         private T[] data;
-        private int size = 3;
+        private readonly int size;
+        private int count = 0;
         private int left = 0, right = 0;
 
-        public QueueCircular()
+        public QueueCircular() : this(3)
+        {
+
+        }
+
+        public QueueCircular(int size)
         {
             data = new T[size];
+            this.size = size;
         }
 
         public void Clear() => Array.Clear(data, 0, data.Length);
@@ -24,32 +31,36 @@ namespace _05_Assignment_Queue
 
         public T Dequeue()
         {
-            if (data[left].Equals(default(T)))
+            if (this.IsEmpty)
                 throw new QueueEmptyException();
             else
             {
+                count--;
                 T dequeuedMember = data[left];
                 data[left] = default(T);
-                left = (left % size) + 1;
+                left = (left + 1) % size;
                 return dequeuedMember;
             }
         }
 
         public void Enqueue(T putInQ)
         {
-            if (left - right == 1 || (left == 0 && right == data.Length))
+            if (this.IsFull)
                 throw new QueueIsFullException();
             else
             {
+                count++;
                 data[right % size] = putInQ;
-                right++;
+                right = (right + 1) % size;
             }
         }
 
         public T Peek() => data[left];
 
-        public int Count { get { return Array.FindAll(data, element => !element.Equals(default(T))).Length; } }
-        public int Size { get { return size; } set { size = value; } }
+        public int Count { get { return count; } }
+        public bool IsEmpty { get { return count == 0; } }
+        public bool IsFull { get { return count == size; } }
+        public int Size { get { return size; } }
         public T[] Data { get { return data; } }
     }
 

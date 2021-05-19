@@ -1,0 +1,51 @@
+﻿@page "/peoplelist" 
+
+<h3>Registered People</h3>
+
+@if (People == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <section>
+        <div>
+
+        </div>
+    </section>
+    int counter = 1;
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birthday</th>
+                <th>Calendar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Person in People)
+            {
+                <tr>
+                    <td>@(counter++)</td>
+                    <td>@Person.FirstName</td>
+                    <td>@Person.LastName</td>
+                    <td>@Person.Birthday.ToShortDateString()</td>
+                    @if (Person.CalendarID == Guid.Empty)
+                    {
+                        <td>Non-existent</td>
+                    }
+                    else
+                    {
+                        <td><a href="@($"calendar/{Person.CalendarID}")">Go to Calendar</a></td>
+                    }
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => DeletePerson(Person.PersonID)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

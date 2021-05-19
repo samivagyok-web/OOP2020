@@ -1,0 +1,17 @@
+﻿@page "/createcalendar"
+
+<h1>Create a Calendar</h1>
+
+<EditForm Model="Calendar" OnValidSubmit="HandleValidSubmit">
+    <div class="form-group">
+        <label for="Person">Person: </label>
+        <InputSelect class="form-control" @bind-Value="@PersonID">
+            <option value="-1">Select Person</option>
+            @foreach (var Person in People)
+            {
+                <option value="@Person.PersonID">@Person.FirstName @Person.LastName</option>
+            }
+        </InputSelect>
+    </div>
+    <button type="submit">Submit</button>
+</EditForm>

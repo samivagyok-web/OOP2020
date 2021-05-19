@@ -1,0 +1,43 @@
+﻿@page "/createactivity"
+
+<h3>Create an activity</h3>
+
+<EditForm Model="Activity" OnValidSubmit="HandleValidSubmit">
+    <div class="form-group">
+        <label for="Name">Name:</label>
+        <InputText id="Name" class="form-control" @bind-Value="Activity.Name" placeholder="Enter the Name of the activity"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label for="creator">Creator: </label>
+        <InputSelect class="form-control" @bind-Value="PersonID">
+            <option value="-1">Select Host</option>
+            @foreach (var person in People)
+            {
+                if (person.CalendarID != Guid.Empty)
+                {
+                    <option value="@person.PersonID">@person.FirstName @person.LastName</option>
+                }
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <InputTextArea id="Description" class="form-control" @bind-Value="Activity.Description" placeholder="Enter the Description of the activity"></InputTextArea>
+    </div>
+
+    <div class="form-group">
+        <label for="StartTime">Start Time:</label>
+        <InputDateTime id="StartTime" class="form-control" @bind-Value="Activity.StartTime"></InputDateTime>
+    </div>
+
+    <div class="form-group">
+        <label for="FinishTime">Finish Time:</label>
+        <InputDateTime id="FinishTime" class="form-control" @bind-Value="Activity.FinishTime"></InputDateTime>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</EditForm>

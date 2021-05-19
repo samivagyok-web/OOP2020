@@ -12,7 +12,7 @@ namespace QueueCircularTest
         {
             // Arrange
             QueueCircular<int> qTest = new QueueCircular<int>();
-            qTest.Size = 3;
+          //  qTest.Size = 3;
             qTest.Enqueue(5);
             qTest.Enqueue(6);
             qTest.Dequeue();

@@ -22,11 +22,13 @@ namespace _05_Assignment_Queue
 
         public bool Contains(T searchingFor)
         {
+            copy = head;
             while (head.next != null)
             {
                 if (head.val.Equals(searchingFor))
                     return true;
             }
+            head = copy;
             return false;
         }
 
@@ -49,8 +51,8 @@ namespace _05_Assignment_Queue
                 throw new QueueIsFullException();
             else
             {
+                copy = head;
                 head.next = new LinkedList<T>(putInQ);
-                appendToEndOfLL(copy);
                 head = head.next;
                 count++;
             }
