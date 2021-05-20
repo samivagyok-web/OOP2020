@@ -37,17 +37,17 @@ namespace _06_Assignment_Agenda.Server.Models.CalendarRepository
 
         public Calendar GetCalendarByID(Guid id)
         {
-            return _applicationDbContext.Calendars.FirstOrDefault(p => p.CalendarID == id);
+            return _applicationDbContext.Calendars.Include(x => x.Activities).FirstOrDefault(p => p.CalendarID == id);
         }
 
         public IEnumerable<Calendar> GetEveryCalendar()
         {
-            return _applicationDbContext.Calendars;
+            return _applicationDbContext.Calendars.Include(x => x.Activities);
         }
 
         public Calendar UpdateCalendar(Calendar calendar)
         {
-            var calendarToUpdate = _applicationDbContext.Calendars.Include(x => x.Activities).FirstOrDefault(p => p.CalendarID == calendar.CalendarID);
+            var calendarToUpdate = _applicationDbContext.Calendars.FirstOrDefault(p => p.CalendarID == calendar.CalendarID);
             if (calendarToUpdate == null) return null;
 
             calendarToUpdate.CalendarID = calendar.CalendarID;

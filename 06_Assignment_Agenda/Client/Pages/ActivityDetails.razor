@@ -1,0 +1,23 @@
+﻿@page "/calendar/{CalendarID}/{ActivityID}"
+
+@if (Activity == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="card-title"><h1>@Activity.Name</h1></div>
+    <div class="card-subtitle"><h6>Hosted by @Host</h6></div>
+
+    <div class="card-group">
+        <div class="row">
+            <p>@Activity.Description</p>
+        </div>
+    </div>
+
+    <div class="card-group">
+        <p>From @Activity.StartTime.ToLongDateString() @Activity.StartTime.ToLongTimeString() to @Activity.FinishTime.ToLongDateString() @Activity.FinishTime.ToLongTimeString()</p>
+    </div>
+
+    <button class="btn btn-danger" @onclick="DeleteActivity">Delete</button>
+}

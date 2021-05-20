@@ -24,19 +24,61 @@ namespace _06_Assignment_Agenda.Client.Pages
         [Inject]
         public IPersonDataService PersonDataService { get; set; }
 
+        public IEnumerable<Person> People { get; set; }
+
+        public IEnumerable<Activity> Activities { get; set; }
+
         public Calendar Calendar { get; set; }
+
+        public bool TimeFrameShow { get; set; }
+
+        public TimeInterval Time { get; set; }
+
+        private void TimeFrameToggle()
+        {
+            
+            TimeFrameShow = !TimeFrameShow;
+        }
 
         protected async override Task OnInitializedAsync()
         {
+            Time = new();
             Calendar = await CalendarDataService.GetCalendarByID(Guid.Parse(CalendarID));
-            Calendar.Activities.OrderBy(p => p.StartTime);
+            Activities = (await ActivityDataService.GetEveryActivity()).Where(p => p.CreatorID == Calendar.PersonID);
+            Activities.OrderBy(p => p.StartTime);
+            People = (await PersonDataService.GetEveryPerson());
         }
 
-        private async Task<string> GetHostName(Guid ID)
+        private string GetHostName(Guid ID)
         {
-            Person host = (await PersonDataService.GetPersonByID(ID));
+            var host = People.Single(p => p.PersonID == ID);
 
             return host.FirstName + " " + host.LastName;
+        }
+
+        private async Task SearchByInterval()
+        {
+            Activities = (await ActivityDataService.GetEveryActivity()).Where(p => p.StartTime >= Time.IntervalStart 
+                                    && p.FinishTime <= Time.IntervalFinish).
+                                            OrderBy(p => p.StartTime);
+            StateHasChanged();
+        }
+
+        private async Task SearchActivity(ChangeEventArgs eventArgs)
+        {
+            string searchTerm = eventArgs.Value.ToString();
+
+            Activities = (await ActivityDataService.GetEveryActivity()).
+                Where(p => p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase)).
+                OrderBy(p => p.StartTime);            
+            StateHasChanged();
+        }
+
+        public class TimeInterval
+        {
+            public DateTime IntervalStart { get; set; }
+
+            public DateTime IntervalFinish { get; set; }
         }
     }
 }
